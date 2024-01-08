@@ -1,11 +1,9 @@
-# DQN/DDQN-Pytorch
-This is a **clean and robust Pytorch implementation of DQN and Double DQN**. A quick render here:
+# C51: Categorical-DQN-Pytorch
+A **clean and robust Pytorch implementation of Categorical DQN(C51)** ：
 
-
-<img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/Render_CVP1.gif" width="90%" height="auto">  | <img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/Render%20of%20DDQN.gif" width="90%" height="auto">
+Render | Training curve
 :-----------------------:|:-----------------------:|
-
-<img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/DQN_DDQN_result.png"/>
+<img src="https://github.com/XinJingHao/C51-Categorical-DQN-Pytorch/blob/main/Images/lld.gif" width="80%" height="auto">  | <img src="https://github.com/XinJingHao/C51-Categorical-DQN-Pytorch/blob/main/Images/training_curve.svg" width="100%" height="auto">
 
 **Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao/RL-Algorithms-by-Pytorch).**
 
@@ -14,6 +12,7 @@ This is a **clean and robust Pytorch implementation of DQN and Double DQN**. A q
 ## Dependencies
 ```python
 gymnasium==0.29.1
+matplotlib==3.8.2
 numpy==1.26.1
 pytorch==2.1.0
 
@@ -25,28 +24,29 @@ python==3.11.5
 ```bash
 python main.py
 ```
-where the default enviroment is 'Pendulum'.  
-
-### Play with trained model
-```bash
-python main.py --EnvIdex 0 --render True --Loadmodel True --ModelIdex 50000
-```
-which will render the 'Pendulum'.  
-
+where the default enviroment is 'CartPole'.  
 
 ### Change Enviroment
-If you want to train on different enviroments
+If you want to train on different enviroments, just run:
 ```bash
 python main.py --EnvIdex 1
 ```
+
 The --EnvIdex can be set to be 0 and 1, where   
 ```bash
 '--EnvIdex 0' for 'CartPole-v1'  
-'--EnvIdex 1' for 'LunarLander-v2'   
+'--EnvIdex 1' for 'LunarLander-v2'
 ```
-Note: if you want train on LunarLander-v2, you need to install [box2d-py](https://gymnasium.farama.org/environments/box2d/) first. You can install box2d-py via:
+
+Note: if you want to play on LunarLander, you need to install [box2d-py](https://gymnasium.farama.org/environments/box2d/) first. You can install box2d-py via: ```pip install gymnasium[box2d]```
+
+
+### Play with trained model
 ```bash
-pip install gymnasium[box2d]
+python main.py --EnvIdex 0 --render True --Loadmodel True --ModelIdex 60 # Play with CartPole
+```
+```bash
+python main.py --EnvIdex 1 --render True --Loadmodel True --ModelIdex 320 # Play with LunarLander
 ```
 
 ### Visualize the training curve
@@ -72,6 +72,4 @@ tensorboard --logdir runs
 For more details of Hyperparameter Setting, please check 'main.py'
 
 ### References
-DQN: Mnih V , Kavukcuoglu K , Silver D , et al. Playing Atari with Deep Reinforcement Learning[J]. Computer Science, 2013. 
-
-Double DQN: Hasselt H V , Guez A , Silver D . Deep Reinforcement Learning with Double Q-learning[J]. Computer ence, 2015.
+[Bellemare M G, Dabney W, Munos R. A distributional perspective on reinforcement learning[C]//International conference on machine learning. PMLR, 2017: 449-458.](https://proceedings.mlr.press/v70/bellemare17a/bellemare17a.pdf)
